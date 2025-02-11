@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Filament\Models\Contracts\FilamentUser;
 use Filament\Panel;
 use Filament\Forms\Set;
 use Laravel\Cashier\Billable;
@@ -10,7 +10,6 @@ use Filament\Forms\Components\Radio;
 use Filament\Forms\Components\Fieldset;
 use Filament\Forms\Components\TextInput;
 use Illuminate\Notifications\Notifiable;
-use Filament\Models\Contracts\FilamentUser;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\Traits\HasPermissionsTrait;
@@ -18,8 +17,11 @@ use App\Traits\HasPermissionsTrait;
 class User extends Authenticatable implements FilamentUser
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
-    use HasFactory, Notifiable, Billable, HasPermissionsTrait; 
-
+    use HasFactory, Notifiable, Billable, HasPermissionsTrait;
+    public function canAccessPanel(Panel $panel): bool
+    {
+        return TRUE;
+    }
     /**
      * The attributes that are mass assignable.
      *
@@ -78,11 +80,7 @@ class User extends Authenticatable implements FilamentUser
         return $this->belongsToMany(Role::class, 'users_roles', 'user_id', 'role_id');
     }
 
-    public function canAccessPanel(Panel $panel): bool
-    {
-        //return str_ends_with($this->email, '@yourdomain.com') && $this->hasVerifiedEmail();
-        return TRUE;
-    }
+
     public static function getForm(): array{
         return [
             TextInput::make('name')
@@ -98,13 +96,13 @@ class User extends Authenticatable implements FilamentUser
                 ->required()
                 ->regex('/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/i')
                 ->markAsRequired(false)
-                ->maxLength(45),  
+                ->maxLength(45),
             TextInput::make('phone')
                 ->label('Your Contact Phone')
                 ->tel()
                 ->mask('(999) 999-9999')
                 ->maxLength(20)
-                ->markAsRequired(false) 
+                ->markAsRequired(false)
                 ->required(),
             TextInput::make('mobile')
                 ->label('Your Cell (optional)')
@@ -112,29 +110,29 @@ class User extends Authenticatable implements FilamentUser
                 ->tel()
                 ->maxLength(20)
                 ->default(null),
-            Fieldset::make('Create a password')                
-                ->schema([    
+            Fieldset::make('Create a password')
+                ->schema([
                 TextInput::make('password')
                     ->password()
                     ->autocomplete('new-password')
                     ->revealable()
-                    ->confirmed()                
+                    ->confirmed()
                     ->required(),
                 TextInput::make('password_confirmation')
                     ->password()
                     ->autocomplete('new-password')
-                    ->required() 
+                    ->required()
                     ->revealable()
                     ->same('password')
-                    ->label('Confirm Password'),     
-            ]),            
-            Fieldset::make('Your Business Info')                
-                ->schema([    
+                    ->label('Confirm Password'),
+            ]),
+            Fieldset::make('Your Business Info')
+                ->schema([
                 TextInput::make('company')
                     ->label('Company Name')
                     ->required()
-                    ->markAsRequired(false) 
-                    ->maxLength(50), 
+                    ->markAsRequired(false)
+                    ->maxLength(50),
                 TextInput::make('support_email')
                 ->label('Customer Support email')
                 ->email()
@@ -142,7 +140,7 @@ class User extends Authenticatable implements FilamentUser
                 ->required()
                 ->regex('/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/i')
                 ->markAsRequired(false)
-                ->maxLength(45),  
+                ->maxLength(45),
                 TextInput::make('loc_qty')
                     ->label('Number of Google Business Profile locations')
                     ->live(onBlur: true)
@@ -151,20 +149,20 @@ class User extends Authenticatable implements FilamentUser
                     ->required()
                     ->markAsRequired(false)
                     ->numeric(),
-                
+
                 TextInput::make('price')
                     ->label('Total subscription price / month')
                     ->disabled()
                     ->prefixIcon('heroicon-o-currency-dollar')
                     //->default('150'),
-                ]),                        
-                Fieldset::make('Minimum Review Threshold') 
-                ->schema([ 
+                ]),
+                Fieldset::make('Minimum Review Threshold')
+                ->schema([
                     TextInput::make('min_rate')
                     ->label('Minimum rating stars')
-                    ->helperText('* Ratings less than the minimum are kept private.') 
-                    ->required()                    
-                    ->default(3), 
+                    ->helperText('* Ratings less than the minimum are kept private.')
+                    ->required()
+                    ->default(3),
                 ])
         ];
     }

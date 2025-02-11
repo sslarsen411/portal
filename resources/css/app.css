@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.text-danger-600{@apply text-red-800;}
+.success{@apply text-emerald-600;}
+.authentication-bg {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-image: url('https://cdn.mojoimpact.com/twoshakes/login-img.webp');
+    
+}
+
+.error {
+    color: red;
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+}
+
+input:read-only,
+textarea:read-only {
+  border: 0;
+  box-shadow: none;
+  background-color: #fffff0;
+}

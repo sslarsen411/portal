@@ -3,7 +3,7 @@
 namespace App\Filament\Resources;
 
 use Filament\Forms;
-use App\Models\Role;
+use App\Models\Category;
 use App\Models\User;
 use Filament\Tables;
 use Filament\Forms\Form;
@@ -23,16 +23,16 @@ class UserResource extends Resource
 {
     protected static ?string $model = User::class;
     protected static ?string $navigationGroup = 'Admin';
-    protected static ?string $navigationIcon = 'lineawesome-users-solid'; 
+    protected static ?string $navigationIcon = 'lineawesome-users-solid';
     public static function shouldRegisterNavigation(): bool
     {
         return  Auth::user()->isSuper();
     }
- 
-    public static function canAccess(): bool 
-    { 
-        return  Auth::user()->isSuper(); 
-    } 
+
+    public static function canAccess(): bool
+    {
+        return  Auth::user()->isSuper();
+    }
     public static function form(Form $form): Form
     {
         return $form
@@ -68,7 +68,7 @@ class UserResource extends Resource
                     ->email()
                     ->maxLength(45)
                     ->default(null),
-                    
+                Forms\Components\TextInput::make('category.categories'),
                 Forms\Components\TextInput::make('stripe_id')
                     ->maxLength(255)
                     ->default(null),
@@ -105,6 +105,11 @@ class UserResource extends Resource
                 TextColumn::make('phone')
                     ->searchable(),
                 TextColumn::make('mobile')
+                    ->toggleable(isToggledHiddenByDefault: true)
+                    ->searchable(),
+                TextColumn::make('categories.category')
+                    ->label('Business Category')
+
                     ->searchable(),
                 TextColumn::make('min_rate')
                     ->searchable(),
@@ -113,9 +118,12 @@ class UserResource extends Resource
                 TextColumn::make('loc_qty')
                     ->searchable(),
                 TextColumn::make('support_email')
-                    ->searchable(),               
-                TextColumn::make('stripe_id')
+                    ->toggleable(isToggledHiddenByDefault: true)
                     ->searchable(),
+                TextColumn::make('subscriptions.stripe_status')
+                    ->label('Billing Status')
+                    ->searchable(),
+                TextColumn::make('stripe_id'),
                 TextColumn::make('pm_type')
                 ->toggleable(isToggledHiddenByDefault: true)
                     ->searchable(),
@@ -123,10 +131,9 @@ class UserResource extends Resource
                 ->toggleable(isToggledHiddenByDefault: true)
                     ->searchable(),
                 TextColumn::make('trial_ends_at')
+                    ->toggleable(isToggledHiddenByDefault: true)
                     ->dateTime()
                     ->sortable(),
-                // TextColumn::make('role')
-                //     ->searchable(),
                 TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()

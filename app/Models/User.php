@@ -5,19 +5,19 @@ namespace App\Models;
 use Filament\Models\Contracts\FilamentUser;
 use Filament\Panel;
 use Filament\Forms\Set;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Laravel\Cashier\Billable;
-use Filament\Forms\Components\Radio;
 use Filament\Forms\Components\Fieldset;
 use Filament\Forms\Components\TextInput;
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\Traits\HasPermissionsTrait;
 
 class User extends Authenticatable implements FilamentUser
 {
-    /** @use HasFactory<\Database\Factories\UserFactory> */
-    use HasFactory, Notifiable, Billable, HasPermissionsTrait;
+    use Notifiable, Billable, HasPermissionsTrait;
     public function canAccessPanel(Panel $panel): bool
     {
         return TRUE;
@@ -35,6 +35,7 @@ class User extends Authenticatable implements FilamentUser
         'phone',
         'mobile',
         'min_rate',
+        'category',
         'multi_loc',
         'loc_qty',
         'support_email',
@@ -63,21 +64,24 @@ class User extends Authenticatable implements FilamentUser
             'password' => 'hashed',
         ];
     }
-    public function locations()    {
+    public function locations(): hasMany    {
         return $this->hasMany(Location::class, 'users_id');
     }
-    public function links()    {
+    public function links(): hasMany    {
         return $this->hasMany(LocationLink::class, 'users_id');
     }
-    public function customers()    {
+    public function customers(): hasMany    {
         return $this->hasMany(Customer::class, 'users_id');
     }
-    public function reviews()    {
+    public function reviews(): hasMany    {
         return $this->hasMany(Review::class, 'users_id');
     }
-    public function roles()    {
-      //  return $this->hasMany(Role::class,  'users_roles');
+    public function roles(): belongsToMany    {
         return $this->belongsToMany(Role::class, 'users_roles', 'user_id', 'role_id');
+    }
+    public function categories(): hasOne
+    {
+        return $this->hasOne(Category::class,   'id');
     }
 
 

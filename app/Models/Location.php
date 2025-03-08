@@ -3,6 +3,9 @@
 namespace App\Models;
 
 
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Support\Facades\Auth;
 use Filament\Forms\Components\Hidden;
 use Filament\Forms\Components\Section;
@@ -12,7 +15,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Location extends Model
 {
-
+    const string STATUS_ACTIVE = 'active';
+    const string STATUS_INACTIVE = 'inactive';
 
     public $table = 'locations';
     protected $fillable = [
@@ -30,16 +34,16 @@ class Location extends Model
         'init_rct',
     ];
 
-    public function users(){
+    public function users(): belongsTo{
         return $this->belongsTo(User::class, 'users_id');
     }
-    public function links(){
+    public function links(): hasOne{
         return $this->hasOne(LocationLink::class);
     }
-    public function customers(){
+    public function customers(): hasMany{
         return $this->hasMany(Customer::class);
     }
-    public function reviews(){
+    public function reviews(): hasMany{
         return $this->hasMany(Review::class);
     }
     public static function getForm(): array{

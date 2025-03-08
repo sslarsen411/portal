@@ -51,10 +51,10 @@
 
     $buttonClasses = \Illuminate\Support\Arr::toCssClasses([
         ...[
-            'fi-btn relative grid-flow-col items-center justify-center font-semibold outline-none transition duration-75 focus-visible:ring-2',
+            'fi-btn relative grid-flow-col items-center justify-center font-semibold outline-hidden transition duration-75 focus-visible:ring-2',
             'pointer-events-none opacity-70' => $disabled,
             'rounded-lg' => ! $grouped,
-            'flex-1 [&:nth-child(1_of_.fi-btn)]:rounded-s-lg [&:nth-last-child(1_of_.fi-btn)]:rounded-e-lg [&:not(:nth-child(1_of_.fi-btn))]:shadow-[-1px_0_0_0_theme(colors.gray.200)] [&:not(:nth-last-child(1_of_.fi-btn))]:me-px dark:[&:not(:nth-child(1_of_.fi-btn))]:shadow-[-1px_0_0_0_theme(colors.white/20%)]' => $grouped,
+            'flex-1 nth-[1_of_.fi-btn]:rounded-s-lg nth-last-[1_of_.fi-btn]:rounded-e-lg not-nth-[1_of_.fi-btn]:shadow-[-1px_0_0_0_var(--color-gray-200)] not-nth-last-[1_of_.fi-btn]:me-px dark:not-nth-[1_of_.fi-btn]:shadow-[-1px_0_0_0_--theme(--color-white/20%)]' => $grouped,
             'cursor-pointer' => $tag === 'label',
             match ($color) {
                 'gray' => null,
@@ -94,12 +94,12 @@
                     },
                 ] :
                 [
-                    'shadow-sm' => ! $grouped,
+                    'shadow-xs' => ! $grouped,
                     'bg-white text-gray-950 hover:bg-gray-50 dark:bg-white/5 dark:text-white dark:hover:bg-white/10' => ($color === 'gray') || ($tag === 'label'),
                     'ring-1 ring-gray-950/10 dark:ring-white/20' => (($color === 'gray') || ($tag === 'label')) && (! $grouped),
                     'bg-custom-600 text-white hover:bg-custom-500 focus-visible:ring-custom-500/50 dark:bg-custom-500 dark:hover:bg-custom-400 dark:focus-visible:ring-custom-400/50' => ($color !== 'gray') && ($tag !== 'label'),
-                    '[input:checked+&]:bg-custom-600 [input:checked+&]:text-white [input:checked+&]:ring-0 [input:checked+&]:hover:bg-custom-500 dark:[input:checked+&]:bg-custom-500 dark:[input:checked+&]:hover:bg-custom-400 [input:checked:focus-visible+&]:ring-custom-500/50 dark:[input:checked:focus-visible+&]:ring-custom-400/50 [input:focus-visible+&]:z-10 [input:focus-visible+&]:ring-2 [input:focus-visible+&]:ring-gray-950/10 dark:[input:focus-visible+&]:ring-white/20' => ($color !== 'gray') && ($tag === 'label'),
-                    '[input:checked+&]:bg-gray-400 [input:checked+&]:text-white [input:checked+&]:ring-0 [input:checked+&]:hover:bg-gray-300 dark:[input:checked+&]:bg-gray-600 dark:[input:checked+&]:hover:bg-gray-500' => ($color === 'gray'),
+                    '[input:checked+&]:bg-custom-600 [input:checked+&]:text-white [input:checked+&]:ring-0 hover:[input:checked+&]:bg-custom-500 dark:[input:checked+&]:bg-custom-500 dark:hover:[input:checked+&]:bg-custom-400 [input:checked:focus-visible+&]:ring-custom-500/50 dark:[input:checked:focus-visible+&]:ring-custom-400/50 [input:focus-visible+&]:z-10 [input:focus-visible+&]:ring-2 [input:focus-visible+&]:ring-gray-950/10 dark:[input:focus-visible+&]:ring-white/20' => ($color !== 'gray') && ($tag === 'label'),
+                    '[input:checked+&]:bg-gray-400 [input:checked+&]:text-white [input:checked+&]:ring-0 hover:[input:checked+&]:bg-gray-300 dark:[input:checked+&]:bg-gray-600 dark:hover:[input:checked+&]:bg-gray-500' => ($color === 'gray'),
                     ]
         ),
     ]);
@@ -125,7 +125,7 @@
         '[:checked+*>&]:text-white' => $tag === 'label',
     ]);
 
-    $badgeContainerClasses = 'fi-btn-badge-ctn absolute start-full top-0 z-[1] w-max -translate-x-1/2 -translate-y-1/2 rounded-md bg-white dark:bg-gray-900 rtl:translate-x-1/2';
+    $badgeContainerClasses = 'fi-btn-badge-ctn absolute start-full top-0 z-1 w-max -translate-x-1/2 -translate-y-1/2 rounded-md bg-white dark:bg-gray-900 rtl:translate-x-1/2';
 
     $labelClasses = \Illuminate\Support\Arr::toCssClasses([
         'fi-btn-label',

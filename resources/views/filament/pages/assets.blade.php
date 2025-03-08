@@ -2,7 +2,7 @@
     <p>
         Make access to the Two Shakes Web App <em>easy</em> for your customers.
     </p>
-    <div style="--col-span-default: 1 / -1;" class="col-[--col-span-default]">
+    <div style="--col-span-default: 1 / -1;" class="col-(--col-span-default)">
         <section  class="fi-section fi-aside grid grid-cols-1 items-start gap-x-6 gap-y-4 md:grid-cols-3 my-4" id="data.profile-information">
             <header class="fi-section-header flex flex-col gap-3">
                 <div class="flex items-center gap-3">
@@ -16,7 +16,7 @@
                     </div>
                 </div>
             </header>
-            <div class="fi-section-content-ctn rounded-xl bg-white shadow-sm ring-1 ring-gray-950/5 dark:bg-gray-900 dark:ring-white/10 md:col-span-2">		
+            <div class="fi-section-content-ctn rounded-xl bg-white shadow-xs ring-1 ring-gray-950/5 dark:bg-gray-900 dark:ring-white/10 md:col-span-2">		
                 <div class="p-6 ">	  
                     <div class="relative overflow-x-auto">
                         <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
@@ -73,7 +73,7 @@
                     </div>
                 </div>
             </header>
-            <div class="fi-section-content-ctn rounded-xl bg-white shadow-sm ring-1 ring-gray-950/5 dark:bg-gray-900 dark:ring-white/10 md:col-span-2">		
+            <div class="fi-section-content-ctn rounded-xl bg-white shadow-xs ring-1 ring-gray-950/5 dark:bg-gray-900 dark:ring-white/10 md:col-span-2">		
                 <div class="p-6 ">	  
                     <div class="relative overflow-x-auto">
                         PDF
@@ -95,7 +95,7 @@
                     </div>
                 </div>
             </header>
-            <div class="fi-section-content-ctn rounded-xl bg-white shadow-sm ring-1 ring-gray-950/5 dark:bg-gray-900 dark:ring-white/10 md:col-span-2">		
+            <div class="fi-section-content-ctn rounded-xl bg-white shadow-xs ring-1 ring-gray-950/5 dark:bg-gray-900 dark:ring-white/10 md:col-span-2">		
                 <div class="p-6 ">	  
                     <div class="relative overflow-x-auto">
                         FORM

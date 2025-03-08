@@ -1,6 +1,6 @@
 <x-filament-panels::page>
  
-  <div  w-full class="col-[--col-span-default]">
+  <div  w-full class="col-(--col-span-default)">
     <section  class="fi-section fi-aside grid grid-cols-1 items-start gap-x-6 gap-y-4 md:grid-cols-3 my-4" id="data.profile-information">
           <header class="fi-section-header flex flex-col gap-3">
               <div class="flex items-center gap-3">
@@ -14,7 +14,7 @@
                   </div>
               </div>
           </header>
-          <div class="fi-section-content-ctn rounded-xl bg-white shadow-sm ring-1 ring-gray-950/5 dark:bg-gray-900 dark:ring-white/10 md:col-span-2">             
+          <div class="fi-section-content-ctn rounded-xl bg-white shadow-xs ring-1 ring-gray-950/5 dark:bg-gray-900 dark:ring-white/10 md:col-span-2">             
             <div class="p-6 space-y-2 w-3/4 mx-auto ">
               <dl class="flex items-center justify-between gap-4">
                 <dt class="text-gray-500">Plan</dt>
@@ -39,7 +39,7 @@
                     <span class="block text-sm">You&apos;ll be charged then  unless you cancel</span>
                 </dd>
               </dl>                        
-              <dl class="flex items-center justify-between gap-4 !mt-4">
+              <dl class="flex items-center justify-between gap-4 mt-4!">
                 <dt class="text-lg  text-gray-500">Current Account Status</dt>
                 <dd class="text-lg text-right font-medium text-gray-900 ">
                     {{  $status }} 
@@ -62,7 +62,7 @@
           </div>
         </div>
       </header>
-      <div class="fi-section-content-ctn rounded-xl bg-white shadow-sm ring-1 ring-gray-950/5 dark:bg-gray-900 dark:ring-white/10 md:col-span-2">	
+      <div class="fi-section-content-ctn rounded-xl bg-white shadow-xs ring-1 ring-gray-950/5 dark:bg-gray-900 dark:ring-white/10 md:col-span-2">	
         <div class="p-6 ">	
           <div class="grid grid-cols-1 items-start justify-between gap-x-6 gap-y-2 md:grid-cols-3">
             <div class="font-bold">Date Issued</div>
@@ -101,7 +101,7 @@
           </div>
         </div>
       </header>
-      <div class="fi-section-content-ctn rounded-xl bg-white shadow-sm ring-1 ring-gray-950/5 dark:bg-gray-900 dark:ring-white/10 md:col-span-2">	
+      <div class="fi-section-content-ctn rounded-xl bg-white shadow-xs ring-1 ring-gray-950/5 dark:bg-gray-900 dark:ring-white/10 md:col-span-2">	
         <div class="p-6 ">	
           <div class="flex items-center gap-x-3 justify-between ">
             <p>
@@ -133,7 +133,7 @@
           </div>
         </div>
       </header>
-      <div class="fi-section-content-ctn rounded-xl bg-white shadow-sm ring-1 ring-gray-950/5 dark:bg-gray-900 dark:ring-white/10 md:col-span-2">	
+      <div class="fi-section-content-ctn rounded-xl bg-white shadow-xs ring-1 ring-gray-950/5 dark:bg-gray-900 dark:ring-white/10 md:col-span-2">	
         <div class="p-6 ">	
           <div class="flex items-center gap-x-3 justify-between ">
             <p>
@@ -163,7 +163,7 @@
           </div>
         </div>
       </header>
-      <div class="fi-section-content-ctn rounded-xl bg-white shadow-sm ring-1 ring-gray-950/5 dark:bg-gray-900 dark:ring-white/10 md:col-span-2">	
+      <div class="fi-section-content-ctn rounded-xl bg-white shadow-xs ring-1 ring-gray-950/5 dark:bg-gray-900 dark:ring-white/10 md:col-span-2">	
         <div class="p-6 ">	
           <div class="flex items-center gap-x-3 justify-between ">
             <p>

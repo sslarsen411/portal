@@ -16,7 +16,7 @@
              {{ $this->form->biz ?? 'Location Data'}}
         </h2>
         <input type="hidden" wire:model="form.biz" id="biz" disabled class="text-2xl w-full ml-8 border-0 border-gray-300 bg-zinc-100 text-red-900 block p-2.5"  >
-        <section  class="p-8 fi-section rounded-xl bg-gray-200 shadow-sm ring-1 ring-gray-950/5" style="padding:1rem;" id="data.location-info-all-fields-are-required">  
+        <section  class="p-8 fi-section rounded-xl bg-gray-200 shadow-xs ring-1 ring-gray-950/5" style="padding:1rem;" id="data.location-info-all-fields-are-required">  
             <div class="grid gap-4 sm:grid-cols-3 sm:gap-6">
                 <div class="sm:col-span-3">
                     <label for="addr" class="block mb-2 text-sm font-medium text-gray-900 ">Street Address</label>

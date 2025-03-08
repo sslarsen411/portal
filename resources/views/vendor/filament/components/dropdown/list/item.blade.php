@@ -24,7 +24,7 @@
 
 @php
     $buttonClasses = \Illuminate\Support\Arr::toCssClasses([
-        'fi-dropdown-list-item flex w-full items-center gap-2 whitespace-nowrap rounded-md p-2 text-sm transition-colors duration-75 outline-none disabled:pointer-events-none disabled:opacity-70',
+        'fi-dropdown-list-item flex w-full items-center gap-2 whitespace-nowrap rounded-md p-2 text-sm transition-colors duration-75 outline-hidden disabled:pointer-events-none disabled:opacity-70',
         'pointer-events-none opacity-70' => $disabled,
         match ($color) {
             'gray' => 'hover:bg-gray-50 focus-visible:bg-gray-50 dark:hover:bg-white/5 dark:focus-visible:bg-white/5',
